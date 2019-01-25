@@ -2,21 +2,26 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+import { space, fontSize, color } from 'styled-system'
 
 const Navigation =styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   height: 100%;
   background: #fff;
   border-top: solid 1px #ddd;
+
+  @media (min-width: ${props => props.theme.breakpoints[1]}px){
+    display: block;
+    border-top: none;
+    border-right: solid 1px #ddd;
+  }
 `
 
 const Item = styled.li`
-  padding: 0;
-  margin: 0;
   text-align: center;
   height: 100%;
   border-right: 1px solid #ddd;
@@ -25,12 +30,26 @@ const Item = styled.li`
     border-right: none;
   }
 
-  a {
-    display: block;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @media (min-width: ${props => props.theme.breakpoints[1]}px){
+    height: auto;
+    border-right: none;
+  }
+`
+
+const LinkItem = styled(Link)`
+  ${space}
+  ${color}
+  ${fontSize}
+
+  display: block;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+  @media (min-width: ${props => props.theme.breakpoints[1]}px){
+    border-right: none;
   }
 `
 
@@ -46,7 +65,12 @@ const Header = () => (
     <Navigation>
       {Links.map(link => (
         <Item key={link.id}>
-          <Link to={link.url}>{link.text}</Link>
+          <LinkItem 
+            fontSize={[2, 2, 4]} 
+            p={[0, 0, 4]} 
+            color='black'
+            to={link.url}
+            >{link.text}</LinkItem>
         </Item>
       ))}
     </Navigation>

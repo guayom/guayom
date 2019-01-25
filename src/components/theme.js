@@ -38,6 +38,7 @@ const theme = {
     white: '#fff',
     transparent: 'transparent',
   },
+  navSizes: [60,300]
 };
 
 export default theme
