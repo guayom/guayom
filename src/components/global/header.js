@@ -10,6 +10,8 @@ const Navigation =styled.ul`
   margin: 0;
   padding: 0;
   height: 100%;
+  background: #fff;
+  border-top: solid 1px #ddd;
 `
 
 const Item = styled.li`

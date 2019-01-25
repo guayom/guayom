@@ -1,22 +1,20 @@
 import styled from "styled-components"
 
 const MainGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 60px;
-  height: calc(100vh - 60px);
+  padding-bottom: 60px;
 
   .navigation {
-    order: 2;
-    border-top: solid 1px #ddd;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    height: 60px;
   }
 
   .main {
-    order: 1;
-    overflow: scroll;
     padding: 20px 40px 40px;
     box-sizing: border-box;
-    height: calc(100vh - 60px);
   }
 `
 
