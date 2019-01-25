@@ -2,6 +2,15 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import styled from 'styled-components'
+import { space, width, fontSize, color } from 'styled-system'
+
+const Box = styled.div`
+  ${space}
+  ${width}
+  ${fontSize}
+  ${color}
+`;
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -17,6 +26,9 @@ export default function Template({
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
+        <Box p={5} bg="gray" color="white" fontSize={[1, 3, 5]}>
+          This is a Box
+        </Box>
       </div>
     </Layout>
   )
