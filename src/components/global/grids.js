@@ -15,8 +15,9 @@ const MainGrid = styled.div`
   .main {
     order: 1;
     overflow: scroll;
-    padding: 40px;
+    padding: 20px 40px 40px;
     box-sizing: border-box;
+    height: calc(100vh - 60px);
   }
 `
 
