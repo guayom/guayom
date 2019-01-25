@@ -4,7 +4,7 @@ const MainGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 60px;
-  height: 100vh;
+  height: calc(100vh - 60px);
 
   .navigation {
     order: 2;
