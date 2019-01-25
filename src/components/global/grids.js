@@ -5,7 +5,7 @@ const MainGrid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 60px;
   height: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
 
   .navigation {
     order: 2;
