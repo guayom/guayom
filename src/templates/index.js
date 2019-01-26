@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Logo from '../images/guayom-logo.svg'
+import { Headline } from '../components/home/home-sections'
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -14,11 +15,9 @@ export default function Template({
       <SEO title={frontmatter.title} />
       <div>
         <img src={Logo} alt={frontmatter.title} width="150"/>
-        <div
-          style={{fontSize: `65px`, fontWeight: `bold`, lineHeight: `1em`, margin: `40px 0`}}
-          >
+        <Headline fontSize={[5, 7, 8]}>
           I make high performance webapps
-        </div>
+        </Headline>
         <div style={{ color: `#362207`, fontSize: `20px`}}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mollis sem, et sollicitudin nisl. Nulla mollis rutrum arcu, non tempus ex mollis ut.
         </div>

@@ -69,7 +69,7 @@ const Header = () => (
       {Links.map(link => (
         <Item key={link.id}>
           <LinkItem 
-            fontSize={[2, 2, 4]} 
+            fontSize={[1, 2, 4]} 
             p={[0, 0, 2]} 
             color='orange'
             to={link.url}
