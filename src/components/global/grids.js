@@ -2,6 +2,9 @@ import styled from "styled-components"
 
 const MainGrid = styled.div`
   min-height: 100vh;
+  color: ${props => props.theme.colors.orange};
+  background: ${props => props.theme.colors.creme};
+  font-family: ${props => props.theme.fonts.sansSerif};
 
   .navigation {
     position: fixed;

@@ -17,7 +17,7 @@ const theme = {
   fonts: {
     serif: 'athelas, georgia, times, serif',
     sansSerif:
-      '-apple-system, BlinkMacSystemFont, "avenir next", avenir, "helvetica neue", helvetica, ubuntu, roboto, noto, "segoe ui", arial, sans-serif',
+      'Archivo, sans-serif;',
   },
   borders: [
     0,
@@ -37,8 +37,12 @@ const theme = {
     gray: '#ddd',
     white: '#fff',
     transparent: 'transparent',
+    creme: "#f3f6c8",
+    orange: "#ea9c1b",
+    green: '#5f685a',
+    brown: '#362207'
   },
-  navSizes: [60,300]
+  navSizes: [60,200]
 };
 
 export default theme

@@ -11,20 +11,20 @@ const Navigation =styled.ul`
   padding: 0;
   margin: 0;
   height: 100%;
-  background: #fff;
-  border-top: solid 1px #ddd;
+  background: ${props => props.theme.colors.orange};
+  /*border-top: solid 1px ${props => props.theme.colors.brown};*/
 
   @media (min-width: ${props => props.theme.breakpoints[1]}px){
     display: block;
     border-top: none;
-    border-right: solid 1px #ddd;
+    border-right: solid 1px ${props => props.theme.colors.orange};
   }
 `
 
 const Item = styled.li`
   text-align: center;
   height: 100%;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid ${props => props.theme.colors.creme};
 
   &:last-of-type {
     border-right: none;
@@ -47,9 +47,11 @@ const LinkItem = styled(Link)`
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  text-transform: uppercase;
 
   @media (min-width: ${props => props.theme.breakpoints[1]}px){
     border-right: none;
+    justify-content: flex-end;
   }
 `
 
@@ -67,8 +69,8 @@ const Header = () => (
         <Item key={link.id}>
           <LinkItem 
             fontSize={[2, 2, 4]} 
-            p={[0, 0, 4]} 
-            color='black'
+            p={[0, 0, 2]} 
+            color='creme'
             to={link.url}
             >{link.text}</LinkItem>
         </Item>
