@@ -30,7 +30,7 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#ea9c1b`,
+        background_color: `#f3f6c8`,
         theme_color: `#ea9c1b`,
         display: `minimal-ui`,
         icon: `src/images/guayom-logo.png`, // This path is relative to the root of the site.
