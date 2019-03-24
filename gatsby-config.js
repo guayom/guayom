@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Guayom' website`,
@@ -5,7 +7,18 @@ module.exports = {
     author: `@guayom`,
   },
   plugins: [
+    'gatsby-plugin-postcss',
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: 'gatsby-source-sanity',
+      options: {
+        projectId: 'o9jxeqmx',
+        dataset: 'production',
+        token: process.env.SANITY_TOKEN,
+        watchMode: true,
+        overlayDrafts: true
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
