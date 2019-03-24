@@ -5,13 +5,11 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark {
+      pages: allSanityPage {
         edges {
           node {
-            frontmatter {
-              path
-              template
-            }
+            id
+            path
           }
         }
       }
@@ -21,12 +19,12 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      const template = path.resolve(`src/templates/${node.frontmatter.template}.js`)
+    result.data.pages.edges.forEach(({ node }) => {
+      const template = path.resolve(`src/templates/main.js`)
       createPage({
-        path: node.frontmatter.path,
+        path: node.path,
         component: template,
-        context: {},
+        context: { id: node.id },
       })
     })
   })

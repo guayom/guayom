@@ -1,10 +1,9 @@
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
 import React from 'react'
+import { StaticQuery, graphql, Link } from 'gatsby'
 import styled from 'styled-components'
 import { space, fontSize, color } from 'styled-system'
 
-const Navigation =styled.ul`
+const Navigation = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   list-style: none;
@@ -31,7 +30,7 @@ const Item = styled.li`
     border-right: none;
   }
 
-  @media (min-width: ${props => props.theme.breakpoints[1]}px){
+  @media (min-width: ${props => props.theme.breakpoints[1]}px) {
     height: auto;
     border-right: none;
   }
@@ -56,36 +55,38 @@ const LinkItem = styled(Link)`
   }
 `
 
-const Links = [
-  {id: "home", url: "/", text: "Home"},
-  {id: "portfolio", url: "/portfolio/", text: "Portfolio"},
-  {id: "cv", url: "/cv/", text: "CV"},
-  {id: "contact", url: "/contact/", text: "Contact"},
-]
-
-const Header = () => (
-  <nav className="navigation">
-    <Navigation>
-      {Links.map(link => (
-        <Item key={link.id}>
-          <LinkItem 
-            fontSize={[1, 2, 4]} 
-            p={[0, 0, 2]} 
-            color='orange'
-            to={link.url}
-            >{link.text}</LinkItem>
-        </Item>
-      ))}
-    </Navigation>
-  </nav>
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query MenuQuery {
+        pages: allSanityPage {
+          edges {
+            node {
+              id
+              name
+              path
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <nav className="navigation">
+        <Navigation>
+          {data.pages.edges.map(page => (
+            <Item key={page.node.id}>
+              <LinkItem
+                fontSize={[1, 2, 4]}
+                p={[0, 0, 2]}
+                color="orange"
+                to={page.node.path}
+              >
+                {page.node.name}
+              </LinkItem>
+            </Item>
+          ))}
+        </Navigation>
+      </nav>
+    )}
+  />
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header

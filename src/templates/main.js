@@ -6,16 +6,15 @@ import SEO from '../components/seo'
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds our post data
-  const { frontmatter, html } = markdownRemark
+  const { page } = data
   return (
     <Layout>
-      <SEO title={frontmatter.title} />
+      <SEO title={page.title} />
       <div>
-        <h1>{frontmatter.title}</h1>
+        <h1>{page.title}</h1>
         <div
           className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
+          dangerouslySetInnerHTML={{ __html: page.description }}
         />
       </div>
     </Layout>
@@ -23,13 +22,10 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      html
-      frontmatter {
-        path
-        title
-      }
+  query PageTemplateQuery($id: String!) {
+    page: sanityPage(id: { eq: $id }) {
+      name
+      description
     }
   }
 `
