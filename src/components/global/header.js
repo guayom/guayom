@@ -76,15 +76,15 @@ export default () => (
         <Navigation>
           {data.pages.edges
             .sort((a, b) => a.node.ordering - b.node.ordering)
-            .map(page => (
-              <Item key={page.node.id}>
+            .map(({node: page}) => (
+              <Item key={page.id}>
                 <LinkItem
                   fontSize={[1, 2, 4]}
                   p={[0, 0, 2]}
                   color="orange"
-                  to={page.node.path}
+                  to={page.path}
                 >
-                  {page.node.name}
+                  {page.name}
                 </LinkItem>
               </Item>
             ))}
