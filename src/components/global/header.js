@@ -65,6 +65,7 @@ export default () => (
               id
               name
               path
+              ordering
             }
           }
         }
@@ -73,18 +74,20 @@ export default () => (
     render={data => (
       <nav className="navigation">
         <Navigation>
-          {data.pages.edges.map(page => (
-            <Item key={page.node.id}>
-              <LinkItem
-                fontSize={[1, 2, 4]}
-                p={[0, 0, 2]}
-                color="orange"
-                to={page.node.path}
-              >
-                {page.node.name}
-              </LinkItem>
-            </Item>
-          ))}
+          {data.pages.edges
+            .sort((a, b) => a.node.ordering - b.node.ordering)
+            .map(page => (
+              <Item key={page.node.id}>
+                <LinkItem
+                  fontSize={[1, 2, 4]}
+                  p={[0, 0, 2]}
+                  color="orange"
+                  to={page.node.path}
+                >
+                  {page.node.name}
+                </LinkItem>
+              </Item>
+            ))}
         </Navigation>
       </nav>
     )}
