@@ -9,6 +9,7 @@ async function createRegularPages(graphql, actions, reporter) {
           node {
             id
             pagePath: path
+            template
           }
         }
       }
@@ -20,11 +21,11 @@ async function createRegularPages(graphql, actions, reporter) {
   const pageEdges = (result.data.pages || {}).edges || []
 
   pageEdges.forEach((edge, index) => {
-    const { id, pagePath } = edge.node
-    const template = path.resolve(`src/templates/main.js`)
+    const { id, pagePath, template } = edge.node
+    const templatePath = path.resolve(`src/templates/${template}.js`)
 
     reporter.info(`Creating page: ${pagePath}`)
-    createPage({ path: pagePath, component: template, context: { id } })
+    createPage({ path: pagePath, component: templatePath, context: { id } })
     createPageDependency({ path: pagePath, nodeId: id })
   })
 }
