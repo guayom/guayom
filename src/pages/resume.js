@@ -105,8 +105,8 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query ResumeTemplateQuery($id: String!) {
-    page: sanityPage(id: { eq: $id }) {
+  query ResumeTemplateQuery {
+    page: sanityPage(path: { eq: "/resume/" }) {
       name
       description
     }

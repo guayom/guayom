@@ -22,8 +22,8 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query PageTemplateQuery($id: String!) {
-    page: sanityPage(id: { eq: $id }) {
+  query ContactPageQuery {
+    page: sanityPage(path: { eq: "/contact/" }) {
       name
       description
     }
