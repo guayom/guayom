@@ -124,33 +124,9 @@ export const pageQuery = graphql`
         region
       }
       picture {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
-        }
         asset {
-          _id
-          originalFilename
-          fluid {
-            base64
-            aspectRatio
-            src
-            srcSet
-            srcWebp
-            srcSetWebp
-            sizes
+          fluid(maxWidth: 700) {
+            ...GatsbySanityImageFluid
           }
         }
       }
