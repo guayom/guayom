@@ -6,7 +6,8 @@ import SEO from '../components/seo'
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { page } = data
+  const { page, projects } = data
+  const sortedProjects = projects.edges.map(p => p.node)
   return (
     <Layout>
       <SEO title={page.title} />
@@ -16,6 +17,7 @@ export default function Template({
           className="blog-post-content"
           dangerouslySetInnerHTML={{ __html: page.description }}
         />
+        <pre>{JSON.stringify(sortedProjects, null, 2)}</pre>
       </div>
     </Layout>
   )
@@ -26,6 +28,14 @@ export const pageQuery = graphql`
     page: sanityPage(path: { eq: "/portfolio/" }) {
       name
       description
+    }
+    projects: allSanityProject {
+      edges {
+        node {
+          title
+          excerpt
+        }
+      }
     }
   }
 `
