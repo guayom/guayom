@@ -1,11 +1,38 @@
 import React from 'react'
 import styled from 'styled-components'
+import { color, space, fontSize } from 'styled-system'
 
-const Container = styled.div`
-  margin-bottom: 30px;
+const Container = styled.section`
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-column-gap: ${props => props.theme.space[3]}px;
+  ${space}
 `
 
-const DateContainer = styled.div``
+const DateContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`
+const Content = styled.div`
+  border-left: 2px solid;
+  ${space}
+`
+const Title = styled.h3`
+  ${fontSize}
+  ${space}
+
+  & > a {
+    font-weight: 400;
+    font-size: .8em;
+    ${color}
+  }
+`
+
+const SubTitle = styled.div`
+  ${space}
+  ${fontSize}
+`
 
 export default ({
   startDate,
@@ -17,26 +44,30 @@ export default ({
   highlights,
 }) => {
   return (
-    <Container>
+    <Container mb={4}>
       <DateContainer>
         {startDate} - {endDate != null ? endDate : `Present`}
-        <h3>{title}</h3>
+      </DateContainer>
+      <Content pl={3}>
+        <Title color="orange" fontSize={4} mb={1} mt={0}>
+          {title}
+          {website && (
+            <>
+              {` - `}
+              <a href={website} target="_blank" rel="noopener noreferrer">
+                <small>{website}</small>
+              </a>
+            </>
+          )}
+        </Title>
         {subTitle && (
-          <p>
-            <strong>{subTitle}</strong>
-          </p>
-        )}
-        {website && (
-          <p>
-            <a href={website} target="_blank" rel="noopener noreferrer">
-              <small>{website}</small>
-            </a>
-          </p>
+          <SubTitle m="0" fontSize="3">
+            {subTitle}
+          </SubTitle>
         )}
         {summary && <p>{summary}</p>}
         {highlights && (
           <div>
-            <p>Highlights:</p>
             <ul>
               {highlights.map((item, i) => (
                 <li>{item}</li>
@@ -44,7 +75,7 @@ export default ({
             </ul>
           </div>
         )}
-      </DateContainer>
+      </Content>
     </Container>
   )
 }

@@ -7,7 +7,7 @@ const MainGrid = styled.div`
   box-sizing: border-box;
   display: grid;
   grid-template-columns: ${props => props.theme.navSizes[1]}px 3fr;
-  grid-column-gap: ${props => props.theme.space[4]}px;
+  grid-column-gap: ${props => props.theme.space[5]}px;
   overflow: hidden;
 
   color: ${props => props.theme.colors.orange};

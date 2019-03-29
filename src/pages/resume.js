@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { Container, Main } from '../components/resume/resumeLayout'
+import { Container, Main, SkillsContainer, NavigationContainer } from '../components/resume/resumeLayout'
 import Panel from '../components/resume/panel'
 import Item from '../components/resume/item'
 import Skill from '../components/resume/skill'
@@ -26,12 +26,11 @@ export default function Template({
       <SEO title={page.name} />
       <Container>
         <Main>
-          <Panel>
-            <h2>Basics</h2>
+          <NavigationContainer py={4}>Navigation here</NavigationContainer>
+          <Panel title="About me">
             {summary}
           </Panel>
-          <Panel>
-            <h2>Work</h2>
+          <Panel title="Work experience">
             {work.edges.map(({ node: work }) => {
               return (
                 <Item
@@ -47,8 +46,7 @@ export default function Template({
               )
             })}
           </Panel>
-          <Panel>
-            <h2>Education</h2>
+          <Panel title="Education">
             {education.edges.map(({ node: education }) => {
               return (
                 <Item
@@ -61,26 +59,27 @@ export default function Template({
               )
             })}
           </Panel>
-          <Panel>
-            <h2>Skills</h2>
-            {skillLevels.edges
-              .sort((a, b) => a.node.ordering - b.node.ordering)
-              .map(({ node: level }) => (
-                <div>
-                  <h4>{level.title}</h4>
+          <Panel title="Skills">
+            <SkillsContainer>
+              {skillLevels.edges
+                .sort((a, b) => a.node.ordering - b.node.ordering)
+                .map(({ node: level }) => (
                   <div>
-                    {skills.edges
-                      .filter(
-                        ({ node: skill }) =>
-                          skill.skillLevel.title === level.title
-                      )
-                      .sort((a, b) => a.node.order - b.node.order)
-                      .map(({ node: skill }) => (
-                        <Skill key={skill.id} skill={skill} />
-                      ))}
+                    <h4 style={{margin: 0}}>{level.title}</h4>
+                    <ul>
+                      {skills.edges
+                        .filter(
+                          ({ node: skill }) =>
+                            skill.skillLevel.title === level.title
+                        )
+                        .sort((a, b) => a.node.order - b.node.order)
+                        .map(({ node: skill }) => (
+                          <Skill key={skill.id} skill={skill} />
+                        ))}
+                    </ul>
                   </div>
-                </div>
-              ))}
+                ))}
+            </SkillsContainer>
           </Panel>
         </Main>
         <aside>
@@ -162,8 +161,8 @@ export const pageQuery = graphql`
           id
           institution
           area
-          startDate
-          endDate
+          startDate(formatString: "YYYY")
+          endDate(formatString: "YYYY")
           studiesType
         }
       }

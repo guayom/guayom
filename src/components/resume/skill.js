@@ -2,8 +2,8 @@ import React from 'react';
 
 export default ({skill}) => {
   return(
-    <div>
+    <li>
       {skill.name}
-    </div>
+    </li>
   );
 };

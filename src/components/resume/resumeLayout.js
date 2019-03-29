@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { space } from 'styled-system'
 
 const Container = styled.div`
   display: grid;
@@ -7,7 +8,7 @@ const Container = styled.div`
   max-height: 100vh;
   overflow: hidden;
   box-sizing: border-box;
-  grid-column-gap: ${props => props.theme.space[4]}px;
+  grid-column-gap: ${props => props.theme.space[5]}px;
 `
 
 const Main = styled.main`
@@ -17,4 +18,13 @@ const Main = styled.main`
   box-sizing: border-box;
 `
 
-export { Container, Main }
+const SkillsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+`
+
+const NavigationContainer = styled.nav`
+  ${space}
+`
+
+export { Container, Main, SkillsContainer, NavigationContainer }
