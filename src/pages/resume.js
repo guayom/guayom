@@ -1,12 +1,12 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import { Container, Main, SkillsContainer, NavigationContainer } from '../components/resume/resumeLayout'
 import Panel from '../components/resume/panel'
 import Item from '../components/resume/item'
 import Skill from '../components/resume/skill'
+import Profile from '../components/resume/profile'
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
@@ -18,7 +18,7 @@ export default function Template({
     education,
     skills,
     skillLevels,
-    basics: { name, label, email, phone, website, summary, idNumber, picture },
+    basics
   } = data
 
   return (
@@ -28,7 +28,7 @@ export default function Template({
         <Main>
           <NavigationContainer py={4}>Navigation here</NavigationContainer>
           <Panel title="About me">
-            {summary}
+            {basics.summary}
           </Panel>
           <Panel title="Work experience">
             {work.edges.map(({ node: work }) => {
@@ -66,7 +66,7 @@ export default function Template({
                 .map(({ node: level }) => (
                   <div>
                     <h4 style={{margin: 0}}>{level.title}</h4>
-                    <ul>
+                    <ul style={{listStyle: `none`, margin: `10px 0 0`, padding: 0}}>
                       {skills.edges
                         .filter(
                           ({ node: skill }) =>
@@ -83,20 +83,7 @@ export default function Template({
           </Panel>
         </Main>
         <aside>
-          <Img fluid={picture.asset.fluid} alt={name} />
-          <div>{name}</div>
-          <div>{label}</div>
-          <div>{email}</div>
-          <div>{phone}</div>
-          {languages.edges.map(({ node: language }) => {
-            return (
-              <div key={language.id}>
-                {language.language}: {language.fluency}
-              </div>
-            )
-          })}
-          <div>{website}</div>
-          <div>{idNumber}</div>
+          <Profile  {...basics} {...{ languages }} />
         </aside>
       </Container>
     </Layout>

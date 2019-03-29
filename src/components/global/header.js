@@ -5,8 +5,7 @@ import { space, fontSize, color } from 'styled-system'
 
 const Navigation = styled.ul`
   list-style: none;
-  padding: 0;
-  margin: 0;
+  ${space}
 `
 
 const Item = styled.li`
@@ -60,7 +59,7 @@ export default () => (
     `}
     render={data => (
       <nav className="navigation">
-        <Navigation>
+        <Navigation my={4}>
           {data.pages.edges
             .sort((a, b) => a.node.ordering - b.node.ordering)
             .map(({node: page}) => (
