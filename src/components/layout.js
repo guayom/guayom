@@ -4,8 +4,8 @@ import { StaticQuery, graphql } from 'gatsby'
 import { MainGrid } from './global/grids'
 import { ThemeProvider } from 'styled-components';
 import theme from './theme';
-
 import Header from './global/header'
+import FindMe from './global/find-me'
 import './layout.css'
 
 const Layout = ({ children }) => (
@@ -22,8 +22,13 @@ const Layout = ({ children }) => (
     render={data => (
       <ThemeProvider theme={theme}>
         <MainGrid>
-          <Header siteTitle={data.site.siteMetadata.title} />
-          <div className="main">{children}</div>
+          <header>
+            <Header siteTitle={data.site.siteMetadata.title} />
+            <FindMe />
+          </header>
+          <section>
+            <div className="main">{children}</div>
+          </section>
         </MainGrid>
       </ThemeProvider>
     )}

@@ -42,7 +42,7 @@ const theme = {
     green: '#5f685a',
     brown: '#362207'
   },
-  navSizes: [60,200]
+  navSizes: [60,250]
 };
 
 export default theme
