@@ -17,7 +17,6 @@ export default () => (
     `}
     render={data => (
       <section>
-        <h3>Find me at</h3>
         {data.profiles.edges.map(({ node: { link, network } }) => (
           <a href={link} style={{display: 'block'}} target="_blank" rel="noopener noreferrer">
             {network}
