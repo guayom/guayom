@@ -26,8 +26,7 @@ export default function Template({
       <SEO title={page.name} />
       <Container>
         <Main>
-          <NavigationContainer py={4}>Navigation here</NavigationContainer>
-          <Panel title="About me">
+          <Panel title="About me" mt={4}>
             {basics.summary}
           </Panel>
           <Panel title="Work experience">

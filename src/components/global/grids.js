@@ -21,6 +21,15 @@ const MainGrid = styled.div`
 
   & > header {
     text-align: right;
+
+    a {
+      color: ${props => props.theme.colors.orange};
+      text-decoration: none;
+
+      &:hover {
+        color: #000;
+      }
+    }
   }
 `
 
