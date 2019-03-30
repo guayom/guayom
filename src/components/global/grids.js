@@ -10,8 +10,8 @@ const MainGrid = styled.div`
   grid-column-gap: ${props => props.theme.space[5]}px;
   overflow: hidden;
 
-  color: ${props => props.theme.colors.orange};
-  background: ${props => props.theme.colors.creme};
+  color: ${props => props.theme.colors.text};
+  background: ${props => props.theme.colors.background};
   font-family: ${props => props.theme.fonts.sansSerif};
 
   & > * {
@@ -23,7 +23,7 @@ const MainGrid = styled.div`
     text-align: right;
 
     a {
-      color: ${props => props.theme.colors.orange};
+      color: ${props => props.theme.colors.text};
       text-decoration: none;
 
       &:hover {

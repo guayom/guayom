@@ -17,7 +17,7 @@ const Title = styled.h2`
 
 export default ({ children, title, mt }) => (
   <Container mb={5} {...{mt}}>
-    <Title color="orange" py="2" mb={4} fontSize={5}>{title}</Title>
+    <Title color="text" py="2" mb={4} fontSize={5}>{title}</Title>
     {children}
   </Container>
 )

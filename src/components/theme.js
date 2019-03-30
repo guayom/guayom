@@ -33,14 +33,11 @@ const theme = {
   heights: [16, 32, 64, 128, 256],
   maxWidths: [16, 32, 64, 128, 256, 512, 768, 1024, 1536],
   colors: {
-    black: '#000',
+    text: '#000',
     gray: '#ddd',
     white: '#fff',
     transparent: 'transparent',
-    creme: "#f3f6c8",
-    orange: "#ea9c1b",
-    green: '#5f685a',
-    brown: '#362207'
+    background: "#fff",
   },
   navSizes: [60,250]
 };

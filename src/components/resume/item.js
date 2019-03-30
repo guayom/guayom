@@ -49,7 +49,7 @@ export default ({
         {startDate} - {endDate != null ? endDate : `Present`}
       </DateContainer>
       <Content pl={3}>
-        <Title color="orange" fontSize={4} mb={1} mt={0}>
+        <Title color="text" fontSize={4} mb={1} mt={0}>
           {title}
           {website && (
             <>

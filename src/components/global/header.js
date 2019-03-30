@@ -67,7 +67,7 @@ export default () => (
                 <LinkItem
                   fontSize={[1, 2, 4]}
                   py={[0, 0, 2]}
-                  color="orange"
+                  color="text"
                   to={page.path}
                 >
                   {page.name}
