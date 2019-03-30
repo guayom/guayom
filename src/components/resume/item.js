@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { color, space, fontSize } from 'styled-system'
+import { FaGlobeAmericas } from 'react-icons/fa'
 
 const Container = styled.section`
   display: grid;
@@ -24,7 +25,7 @@ const Title = styled.h3`
 
   & > a {
     font-weight: 400;
-    font-size: .8em;
+    font-size: 0.8em;
     ${color}
   }
 `
@@ -53,9 +54,19 @@ export default ({
           {title}
           {website && (
             <>
-              {` - `}
-              <a href={website} target="_blank" rel="noopener noreferrer">
-                <small>{website}</small>
+              {` `}
+              <a
+                href={website}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`Go to ${title}'s website`}
+                style={{
+                  fontSize: `16px`
+                }}
+              >
+                <small>
+                  <FaGlobeAmericas />
+                </small>
               </a>
             </>
           )}
